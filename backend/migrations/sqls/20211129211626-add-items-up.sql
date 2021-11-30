@@ -5,7 +5,7 @@ CREATE TABLE items (
     photoUrl VARCHAR(250) NOT NULL,
     price INT,
     status VARCHAR(30) DEFAULT "pending",
-    createdAt TIMESTAMP,
+    createdAt INT NOT NULL,
     userId INT(6) NOT NULL,
     FOREIGN KEY (userID) REFERENCES users (id) ON DELETE CASCADE
 );
