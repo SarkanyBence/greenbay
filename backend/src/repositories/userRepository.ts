@@ -22,6 +22,15 @@ export = {
     return simpleQuery(sql);
   },
 
+  findByName: function (userName: string): Promise<User> {
+    const sql: string = mysql.format(
+      "SELECT * FROM users WHERE userName = ?",
+      userName
+    );
+
+    return simpleQuery(sql);
+  },
+
   existsByName: function (userName: string): Promise<boolean> {
     const sql: string = mysql.format(
       "SELECT CASE WHEN EXISTS ( SELECT * FROM users WHERE userName = ?) THEN true ELSE false END;",

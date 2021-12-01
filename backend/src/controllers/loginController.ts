@@ -1,5 +1,3 @@
-import registrationService from "../services/registrationService";
-import User from "../types/User";
 import { Router } from "express";
 import loginService from "../services/loginService";
 
@@ -11,10 +9,16 @@ loginController.post("/", async (req, res) => {
 
   loginService
     .checkUser(userName, password)
-    .then((user: User) => {
-      res.status(200).json(user);
+    .then((token: string) => {
+      res.status(200).json(token);
     })
-    .catch((error) => res.status(500).json({ error: "Internal server error" }));
+    .catch((error) => {
+      if (error.status === 401) {
+        res.status(401).json({ error: "Username or password is incorrect" });
+      } else {
+        res.status(500).json({ error: "Internal server error" });
+      }
+    });
 });
 
 export default loginController;

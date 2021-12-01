@@ -1,5 +1,5 @@
 import UserStatus from "./UserStatus";
-import { encrypt } from "../utils/Bcrypt";
+import * as bcrypt from "../utils/Bcrypt";
 
 class User {
   id: number;
@@ -11,7 +11,7 @@ class User {
   constructor(userName: string, password: string) {
     this.userName = userName;
     this.status = UserStatus.PENDING;
-    this.password = encrypt(password);
+    this.password = bcrypt.encrypt(password);
   }
 }
 

@@ -5,8 +5,8 @@ function encrypt(password: string) {
   return bcrypt.hashSync(password, salt);
 }
 
-function verify(password: string, hash: string): boolean {
-  return bcrypt.compareSync(password, hash);
+function verify(passToCheck: string, savedPass: string): boolean {
+  return bcrypt.compareSync(passToCheck, savedPass);
 }
 
 export { encrypt, verify };

@@ -1,8 +1,9 @@
 import database from "../database/database";
-import mysql, { ResultSetHeader } from "mysql2";
+import mysql from "mysql2";
 
 const simpleQuery = async (sql: string): Promise<any> => {
-  return await startQuery(sql)[0];
+  let result = await startQuery(sql);
+  return result[0];
 };
 
 const arrayQuery = async (sql: string): Promise<any[]> => {
@@ -20,7 +21,6 @@ const existsQuery = async (sql: string): Promise<boolean> => {
 
 const returnQuery = async (sql1: string, sql2: string): Promise<any> => {
   const result = await startQuery(sql1);
-  console.log(result);
   const lastId = result.insertId;
   sql2 = mysql.format(sql2, lastId);
   return await startQuery(sql2);
