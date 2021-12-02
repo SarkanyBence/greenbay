@@ -23,7 +23,8 @@ const returnQuery = async (sql1: string, sql2: string): Promise<any> => {
   const result = await startQuery(sql1);
   const lastId = result.insertId;
   sql2 = mysql.format(sql2, lastId);
-  return await startQuery(sql2);
+  let innserResult = await startQuery(sql2);
+  return innserResult[0];
 };
 
 function startQuery(sql): Promise<any> {
