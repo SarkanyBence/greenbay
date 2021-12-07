@@ -1,0 +1,29 @@
+@use "sass:math";
+$full-height: 100vh;
+$full-width: 100vw;
+
+// base grid height and width
+$base-grid-height: $full-height * 0.01;
+$base-grid-width: $full-width * 0.01;
+$base-margin-vertical: 1vh;
+$base-margin-horizontal: 1vw;
+$base-radius: math.div($base-grid-height, 2);
+
+//base fonts
+$base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+  "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+$base-font-size: $base-grid-width * 1.5;
+
+//components relative height and width
+//header
+$header-height: $full-height * 0.08;
+$header-img-size: $base-grid-width * 5.5;
+$header-btn-width: $base-grid-width * 12;
+$header-btn-height: $header-height * 0.75;
+
+//register
+$reg-input-width: $full-width * 0.2;
+
+//main body
+$main-container-height: $full-height * 0.92;

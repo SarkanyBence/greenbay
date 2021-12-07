@@ -12,38 +12,53 @@ function Header() {
   return (
     <div className="header">
       <Link to={user.isLoggedIn ? "/buy" : "/login"}>
-        <div className="title">
+        <div className="nav-item">
           <h1> greenBay!</h1>
-          <p> hello {user.userName} </p>
         </div>
       </Link>
       <Link to={user.isLoggedIn ? "/buy" : "/login"}>
-        <div className="nav-item">{user.isLoggedIn ? "Buy" : "Login"}</div>
-        <button
-          onClick={() => {
-            dispatch(
-              changeUser({
-                userName: "Bence",
-                isLoggedIn: true,
-              })
-            );
-          }}
-        >
-          Log Me In
-        </button>
-        <button
-          onClick={() => {
-            dispatch(logoutUser());
-          }}
-        >
-          Log Me Out
-        </button>
+        <div className="nav-item">
+          <p> Hi {user.userName}! </p>
+        </div>
+      </Link>
+        <div className="nav-item grow">
+        </div>
+      <Link to={user.isLoggedIn ? "/buy" : "/login"}>
+        <div className="nav-item navbtn">
+          <p>{user.isLoggedIn ? "buy" : "login"} </p>
+        </div>
       </Link>
       <Link to={user.isLoggedIn ? "/sell" : "/register"}>
-        <div className="nav-item">{user.isLoggedIn ? "Sell" : "Register"}</div>
+        <div className="nav-item navbtn">
+          <p>{user.isLoggedIn ? "sell" : "register"} </p>
+        </div>
       </Link>
     </div>
   );
 }
 
 export default Header;
+
+// <div className="nav-item">{user.isLoggedIn ? "Buy" : "Login"}
+// <button
+//   onClick={() => {
+//     dispatch(
+//       changeUser({
+//         userName: "Bence",
+//         isLoggedIn: true,
+//       })
+//       );
+//     }}
+// >
+//   login
+// </button>
+// </div>
+//     <div className="nav-item">{user.isLoggedIn ? "Buy" : "Login"}
+// <button
+//   onClick={() => {
+//     dispatch(logoutUser());
+//   }}
+// >
+//   logout
+// </button>
+// </div>

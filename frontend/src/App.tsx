@@ -11,6 +11,7 @@ import Register from "./components/Register";
 import Sell from "./components/Sell";
 import { useAppSelector } from "./hooks/stateHooks";
 import { StateType } from "./redux/store";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const isLoggedIn: boolean = useAppSelector(
@@ -21,7 +22,6 @@ function App() {
     return (
       <Router>
         <div className="App">
-          <p>IS LOGGED IN: {isLoggedIn}</p>
           <Header />
           <Switch>
             <Route path="/register">
@@ -41,7 +41,6 @@ function App() {
     return (
       <Router>
         <div className="App">
-          <p>IS LOGGED IN: {isLoggedIn}</p>
           <Header />
           <Switch>
             <Route path="/buy">

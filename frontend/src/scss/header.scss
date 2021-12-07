@@ -1,0 +1,51 @@
+.header {
+  height: $header-height;
+  display: flex;
+  flex-direction: row;
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+  background-color: map-get($colors, "background-transparent");
+  justify-content: space-between;
+  align-items: center;
+  padding: $base-margin-horizontal;
+  gap: 30px;
+
+  a {
+    text-decoration: none;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    color: map-get($colors, "greenColor");
+
+    h1 {
+      font-weight: 700;
+      font-size: $base-font-size * 1.2;
+    }
+  }
+  .grow {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+  .navbtn {
+    padding-top: $header-btn-height * 0.1;
+    font-size: $base-font-size * 0.9;
+    font-family: $base-font-family;
+    font-weight: 200;
+    border: none;
+    border-radius: $base-radius;
+    color: White;
+    background-color: map-get($colors, "greenColor");
+    // padding: $base-margin-horizontal * 0.4;
+    width: $header-btn-width;
+    height: $header-btn-height;
+
+    &:hover {
+      background-color: map-get($colors, "background-transparent");
+    }
+  }
+}

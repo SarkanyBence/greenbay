@@ -1,8 +1,8 @@
 import userRepo from "../repositories/userRepository";
 
 const userValidator = async (req, res, next) => {
-  const userName: string = req.body.userName;
-  const password: string = req.body.password;
+  const userName: string = req.body.data.userName;
+  const password: string = req.body.data.password;
   const path: string = req.originalUrl;
 
   if (!userName) {
