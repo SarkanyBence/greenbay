@@ -4,8 +4,8 @@ import loginService from "../services/loginService";
 const loginController = Router();
 
 loginController.post("/", async (req, res) => {
-  const userName: string = req.body.userName;
-  const password: string = req.body.password;
+  const userName: string = req.body.data.userName;
+  const password: string = req.body.data.password;
 
   loginService
     .checkUser(userName, password)

@@ -16,7 +16,7 @@ const userValidator = async (req, res, next) => {
   }
 
   if (!path.includes("login") && (await userRepo.existsByName(userName))) {
-    res.status(400).json({ error: "Username is already taken" });
+    res.status(422).json({ error: "Username is already taken" });
     return;
   }
 

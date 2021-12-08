@@ -24,15 +24,28 @@
     h1 {
       font-weight: 700;
       font-size: $base-font-size * 1.2;
+      margin-bottom: 0;
     }
-  }
-  .grow {
-    flex-grow: 1;
-    flex-shrink: 1;
+    button {
+      font-size: $base-font-size * 0.9;
+      font-family: $base-font-family;
+      font-weight: 200;
+      background: none;
+      border: none;
+      color: White;
+    }
+    p {
+      align-self: center;
+      margin-bottom: 0;
+      &.title {
+        font-size: $base-font-size * 1.2;
+        font-weight: 200;
+        color: map-get($colors, "yellowColor" );
+      }
+    }
   }
 
   .navbtn {
-    padding-top: $header-btn-height * 0.1;
     font-size: $base-font-size * 0.9;
     font-family: $base-font-family;
     font-weight: 200;
@@ -40,12 +53,15 @@
     border-radius: $base-radius;
     color: White;
     background-color: map-get($colors, "greenColor");
-    // padding: $base-margin-horizontal * 0.4;
     width: $header-btn-width;
     height: $header-btn-height;
 
     &:hover {
       background-color: map-get($colors, "background-transparent");
     }
+  }
+  .grow {
+    flex-grow: 1;
+    flex-shrink: 1;
   }
 }

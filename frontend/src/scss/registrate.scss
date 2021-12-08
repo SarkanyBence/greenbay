@@ -35,15 +35,15 @@
       }
     }
 
-    .error {
+    .error,
+    .other-error {
       color: map-get($colors, "redColor");
       font-size: $base-font-size * 0.65;
       display: block;
       height: $header-btn-height;
       opacity: 0;
-      width: $reg-input-width;
     }
-
+    
     .formInput {
       width: $reg-input-width;
       input {
@@ -53,7 +53,7 @@
         border-radius: $base-radius;
         -webkit-transition: 0.5s;
         transition: 0.5s;
-
+        
         &:hover,
         &:focus {
           border: map-get($colors, "greenColor") 1px solid;
@@ -66,14 +66,18 @@
           border: map-get($colors, "greenColor") 2px solid;
         }
         
-        &:invalid[focused="true"] {
+        &:invalid[data-focused="true"] {
           border: 1px solid red;
         }
-
-        &:invalid[focused="true"] ~ .error {
+        
+        &:invalid[data-focused="true"] ~ .error {
           opacity: 1;
         }
       }
+    }
+    .other-error {
+      margin-top: auto;
+      line-height: 80px;
     }
   }
 }

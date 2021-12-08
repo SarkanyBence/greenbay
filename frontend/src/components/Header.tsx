@@ -1,13 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/stateHooks";
 import { StateType } from "../redux/store";
-import { changeUser, logoutUser } from "../redux/UserSlice";
+import { logoutUser } from "../redux/UserSlice";
 
 function Header() {
   const user = useAppSelector((state: StateType) => state.user);
-
-  console.log("State is:", user);
   const dispatch = useAppDispatch();
+  const history = useHistory();
+  
+  const logout = () => {
+    dispatch(logoutUser());
+    localStorage.clear();
+    history.push("/login");
+  };
 
   return (
     <div className="header">
@@ -18,11 +23,10 @@ function Header() {
       </Link>
       <Link to={user.isLoggedIn ? "/buy" : "/login"}>
         <div className="nav-item">
-          <p> Hi {user.userName}! </p>
+          <p className="title"> Hi {user.userName}! </p>
         </div>
       </Link>
-        <div className="nav-item grow">
-        </div>
+      <div className="nav-item grow"></div>
       <Link to={user.isLoggedIn ? "/buy" : "/login"}>
         <div className="nav-item navbtn">
           <p>{user.isLoggedIn ? "buy" : "login"} </p>
@@ -33,6 +37,11 @@ function Header() {
           <p>{user.isLoggedIn ? "sell" : "register"} </p>
         </div>
       </Link>
+      {user.isLoggedIn && (
+        <div className="nav-item navbtn">
+          <button onClick={logout}>logout </button>
+        </div>
+      )}
     </div>
   );
 }

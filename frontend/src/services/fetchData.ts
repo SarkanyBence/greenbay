@@ -21,6 +21,7 @@ const fetchData = async (
     const result = await response.json();
 
     if (!response.ok) {
+      // eslint-disable-next-line no-throw-literal
       throw { status: response.status, message: result.error };
     } else {
       return result;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import fetchData from "../services/fetchData";
 import NewUser from "../types/newUser";
@@ -7,7 +7,6 @@ import PropsInput from "../types/PropsInput";
 import FormInput from "./FormInput";
 
 function Register() {
-  // const user: User = useAppSelector((state: StateType) => state.user);
   const history = useHistory();
   const [userState, setUserState] = useState({
     userName: "",
@@ -15,20 +14,28 @@ function Register() {
     password: "",
     confirmPassword: "",
   } as NewUser);
+  const [userError, setUserError] = useState(false);
+
+  useEffect(() => {}, [userError]);
 
   const submitForm = (e: any) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
     const dataDto: NewUserDto = new NewUserDto(data as unknown as NewUser);
-    
+
     fetchData("POST", "/register", dataDto)
       .then((res) => {
         history.push("/login");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err.status === 422) {
+          setUserError(true);
+        }
+      });
   };
 
   const handleChange = (e: any) => {
+    if (e.target.name === "userName") setUserError(false);
     setUserState({ ...userState, [e.target.name]: e.target.value });
   };
 
@@ -74,7 +81,12 @@ function Register() {
   return (
     <div className="base-container">
       <form onSubmit={submitForm}>
-        <span className="formInput error">"Username is already taken!"</span>
+        <span
+          className="formInput other-error"
+          style={{ opacity: userError ? 1 : 0 }}
+        >
+          Username is already taken!
+        </span>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
@@ -84,7 +96,7 @@ function Register() {
           />
         ))}
 
-        <button>Submit</button>
+        <button>Sign Up</button>
       </form>
     </div>
   );
