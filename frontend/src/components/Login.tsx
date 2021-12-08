@@ -8,6 +8,7 @@ import PropsInput from "../types/PropsInput";
 import User from "../types/User";
 import FormInput from "./FormInput";
 import { changeUser } from "../redux/UserSlice";
+import { fetchAllItems } from "../redux/ItemSlice";
 
 function Login() {
   const dispatch = useAppDispatch();
@@ -34,7 +35,13 @@ function Login() {
           isLoggedIn: true,
         };
         dispatch(changeUser(newUser));
-        history.push("/buy");
+        dispatch(fetchAllItems())
+          .unwrap()
+          .then((items) => {
+            console.log(items);
+
+            history.push("/buy");
+          });
       })
       .catch((err) => {
         if (err.status === 400) {
