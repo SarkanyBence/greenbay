@@ -1,0 +1,51 @@
+.item-container {
+  padding: $base-margin-vertical * 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: $base-margin-vertical * 4;
+  font-family: $base-font-family;
+  border-radius: $base-radius;
+  font-size: $base-font-size;
+  // overflow-y: scroll;
+  // overflow-x: hidden;
+  // scroll-behavior: smooth;
+
+  .item {
+    background-color: map-get($colors, "background-item");
+    height: $item-height;
+    width: $item-width;
+    padding: $base-margin-vertical * 1;
+    border: map-get($colors, "lightGrayColor") solid 1px;
+    border-radius: $base-radius;
+    transition: box-shadow 0.3s;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+    gap: 10px;
+    justify-content: space-between;
+
+    .subitem {
+      width: auto;
+      text-align: start;
+      flex-grow: 1;
+    }
+    .description {
+      font-size: $base-font-size * 0.8;
+      font-weight: 200;
+    }
+    .price {
+      font-size: $base-font-size * 1.2;
+      font-weight: 800;
+    }
+  }
+  .subitem-image {
+    flex-shrink: 0;
+    align-items: center;
+    margin: 0px 10px;
+    img {
+      height: $item-img-height;
+    }
+  }
+
+}

@@ -9,11 +9,31 @@ import Header from "./components/Header";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Sell from "./components/Sell";
-import { useAppSelector } from "./hooks/stateHooks";
+import { useAppDispatch, useAppSelector } from "./hooks/stateHooks";
 import { StateType } from "./redux/store";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
+import jwt from "jsonwebtoken";
+import { changeUser } from "./redux/UserSlice";
+import TokenType from "./types/TokenType";
+import User from "./types/User";
 
 function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const decoded: TokenType = jwt.decode(token) as TokenType;
+      const newUser: User = {
+        userName: decoded.userName,
+        isLoggedIn: true,
+      };
+
+      dispatch(changeUser(newUser));
+    }
+  }, [dispatch]);
+
   const isLoggedIn: boolean = useAppSelector(
     (state: StateType) => state.user.isLoggedIn
   );
