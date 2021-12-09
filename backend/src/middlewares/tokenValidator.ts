@@ -1,17 +1,17 @@
+import jwt from "jsonwebtoken";
+
 const tokenValidator = (req, res, next) => {
-  const userName: string = req.body.userName;
-  const password: string = req.body.password;
-
-  if (!userName) {
-    res.status(400).json({ error: "Username is required" });
-    return;
+  if (!req.headers.authorization) {
+    return res.status(401).json({ error: "No token provided!" });
   }
-  if (!password) {
-    res.status(400).json({ error: "Password is required" });
-    return;
-  }
+  const token = req.headers.authorization;
 
-  next();
+  try {
+    res.locals.userData = jwt.verify(token, process.env.SECRET_TOKEN);
+    next();
+  } catch (error) {
+    return res.status(401).json({ error: "Token rejected" });
+  }
 };
 
 export default tokenValidator;

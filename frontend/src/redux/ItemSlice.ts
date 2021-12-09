@@ -13,8 +13,7 @@ export interface ItemState {
   error: SerializedError | null;
 }
 export const fetchAllItems = createAsyncThunk("/items", async (thunkApi) => {
-  const response = await fetchData("GET", "/items");
-  return response.data;
+  return await fetchData("GET", "/items");
 });
 
 export const ItemSlice = createSlice({
@@ -36,7 +35,7 @@ export const ItemSlice = createSlice({
 
     builder.addCase(fetchAllItems.fulfilled, (state: ItemState, action) => {
       state.loading = false;
-      state.items.push(action.payload);
+      state.items = [...action.payload];
     });
 
     builder.addCase(fetchAllItems.rejected, (state: ItemState, action) => {

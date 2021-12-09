@@ -1,5 +1,4 @@
 import ItemStatus from "./ItemStatus";
-import UserStatus from "./UserStatus";
 
 type Item = {
   id?: number;

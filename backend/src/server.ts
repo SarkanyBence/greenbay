@@ -15,6 +15,6 @@ app.use(cors());
 
 app.use("/register", userValidator, registerController);
 app.use("/login", userValidator, loginController);
-app.use("/item", tokenValidator, itemController);
+app.use("/items", tokenValidator, itemController);
 
 export default app;

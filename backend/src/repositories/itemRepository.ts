@@ -19,4 +19,10 @@ export = {
 
     return arrayQuery(sql);
   },
+
+  findAllSellable: function (): Promise<Item[]> {
+    const sql: string = "SELECT * FROM items";
+
+    return arrayQuery(sql);
+  },
 };

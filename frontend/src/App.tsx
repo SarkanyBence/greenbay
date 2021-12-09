@@ -3,6 +3,7 @@ import {
   Switch,
   Route,
   Redirect,
+  useHistory,
 } from "react-router-dom";
 import Buy from "./components/Buy";
 import Header from "./components/Header";
@@ -20,9 +21,10 @@ import User from "./types/User";
 
 function App() {
   const dispatch = useAppDispatch();
+  const history = useHistory();
+
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (token) {
       const decoded: TokenType = jwt.decode(token) as TokenType;
       const newUser: User = {
@@ -31,6 +33,7 @@ function App() {
       };
 
       dispatch(changeUser(newUser));
+      history.push("/buy");
     }
   }, [dispatch]);
 
@@ -63,7 +66,7 @@ function App() {
         <div className="App">
           <Header />
           <Switch>
-            <Route path="/buy">
+            <Route exact path="/">
               <Buy />
             </Route>
             <Route path="/sell">

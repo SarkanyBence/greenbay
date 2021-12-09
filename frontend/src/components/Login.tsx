@@ -40,7 +40,7 @@ function Login() {
           .then((items) => {
             console.log(items);
 
-            history.push("/buy");
+            history.push("/");
           });
       })
       .catch((err) => {

@@ -7,7 +7,7 @@ function Header() {
   const user = useAppSelector((state: StateType) => state.user);
   const dispatch = useAppDispatch();
   const history = useHistory();
-  
+
   const logout = () => {
     dispatch(logoutUser());
     localStorage.clear();
@@ -16,18 +16,18 @@ function Header() {
 
   return (
     <div className="header">
-      <Link to={user.isLoggedIn ? "/buy" : "/login"}>
+      <Link to={user.isLoggedIn ? "/" : "/login"}>
         <div className="nav-item">
           <h1> greenBay!</h1>
         </div>
       </Link>
-      <Link to={user.isLoggedIn ? "/buy" : "/login"}>
+      <Link to={user.isLoggedIn ? "/" : "/login"}>
         <div className="nav-item">
           <p className="title"> Hi {user.userName}! </p>
         </div>
       </Link>
       <div className="nav-item grow"></div>
-      <Link to={user.isLoggedIn ? "/buy" : "/login"}>
+      <Link to={user.isLoggedIn ? "/" : "/login"}>
         <div className="nav-item navbtn">
           <p>{user.isLoggedIn ? "buy" : "login"} </p>
         </div>
@@ -47,27 +47,3 @@ function Header() {
 }
 
 export default Header;
-
-// <div className="nav-item">{user.isLoggedIn ? "Buy" : "Login"}
-// <button
-//   onClick={() => {
-//     dispatch(
-//       changeUser({
-//         userName: "Bence",
-//         isLoggedIn: true,
-//       })
-//       );
-//     }}
-// >
-//   login
-// </button>
-// </div>
-//     <div className="nav-item">{user.isLoggedIn ? "Buy" : "Login"}
-// <button
-//   onClick={() => {
-//     dispatch(logoutUser());
-//   }}
-// >
-//   logout
-// </button>
-// </div>
