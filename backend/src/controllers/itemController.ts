@@ -21,14 +21,15 @@ itemController.get("/", async (req, res) => {
     .catch((error) => res.status(500).json({ error: "Internal server error" }));
 });
 
-itemController.post("/", async (req, res) => {
-  const userName: string = req.body.userName;
-  const password: string = req.body.password;
+itemController.post("/:id", async (req, res) => {
+  const userId: number = req.params.id as unknown as number;
+  const item: Item = req.body.data.item;
 
-  registrationService
-    .saveUser(userName, password)
-    .then((user: User) => {
-      res.status(200).json(user);
+  itemService
+    .saveNewItem(item, userId)
+    .then((item: Item) => {
+      let dto = new ItemDto(item);
+      res.status(200).json(item);
     })
     .catch((error) => res.status(500).json({ error: "Internal server error" }));
 });

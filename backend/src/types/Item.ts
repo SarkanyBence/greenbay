@@ -6,7 +6,7 @@ type Item = {
   description: string;
   photoUrl: string;
   price: number;
-  status: ItemStatus;
+  status?: ItemStatus;
   createdAt?: number;
   userId?: number;
 };

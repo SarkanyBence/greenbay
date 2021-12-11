@@ -11,7 +11,7 @@ registerController.post("/", async (req, res) => {
   const password: string = req.body.data.password;
 
   registrationService
-    .saveUser(userName, password)
+    .saveUser(userName, password, email)
     .then((user: User) => {
       let userDto: UserDto = new UserDto(user);
 
