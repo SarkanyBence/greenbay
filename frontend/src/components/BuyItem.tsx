@@ -1,7 +1,6 @@
 import PropsItem from "../types/PropsItem";
 
 function BuyItem(props: PropsItem) {
-  const item = props.item;
 
   return (
     <div className="item">
