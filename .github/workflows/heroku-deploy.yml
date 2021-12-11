@@ -29,6 +29,7 @@ jobs:
       - name: Build, push and deploy greenbay client to Heroku
         uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
+          email: ${{ secrets.HEROKU_EMAIL }}
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: tsavorite-greenbay
           dockerfile_directory: ./frontend
