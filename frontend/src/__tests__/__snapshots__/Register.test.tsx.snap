@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register tests Register snapshot test 1`] = `
+<div
+  className="base-container"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <span
+      className="formInput other-error"
+      style={
+        Object {
+          "opacity": 0,
+        }
+      }
+    >
+      Username is already taken!
+    </span>
+    <div
+      className="formInput"
+    >
+      <input
+        data-focused="false"
+        name="userName"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern="^[A-Za-z0-9]{3,16}$"
+        placeholder="Username"
+        required={true}
+        type="text"
+        value=""
+      />
+      <span
+        className="formInput error"
+      >
+        Username should be 3-16 characters, no special characters allowed!
+      </span>
+    </div>
+    <div
+      className="formInput"
+    >
+      <input
+        data-focused="false"
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Email"
+        required={true}
+        type="email"
+        value=""
+      />
+      <span
+        className="formInput error"
+      >
+        It should be a valid email address!
+      </span>
+    </div>
+    <div
+      className="formInput"
+    >
+      <input
+        data-focused="false"
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern=".{8,20}"
+        placeholder="Password"
+        required={true}
+        type="password"
+        value=""
+      />
+      <span
+        className="formInput error"
+      >
+        Password should be 8-20 characters!
+      </span>
+    </div>
+    <div
+      className="formInput"
+    >
+      <input
+        data-focused="false"
+        name="confirmPassword"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        pattern=""
+        placeholder="Confirm password"
+        required={true}
+        type="password"
+        value=""
+      />
+      <span
+        className="formInput error"
+      >
+        Passwords don't match
+      </span>
+    </div>
+    <button>
+      Sign Up
+    </button>
+  </form>
+</div>
+`;

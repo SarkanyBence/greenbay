@@ -33,7 +33,7 @@ function App() {
       };
 
       dispatch(changeUser(newUser));
-      history.push("/buy");
+      // history.push("/buy");
     }
   }, [dispatch]);
 

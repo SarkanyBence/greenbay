@@ -1,0 +1,37 @@
+name: "Automatic Heroku deployment"
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+      - develop
+  push:
+    branches:
+      - heroku
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build, push and deploy greenbay server to Heroku
+        uses: gonuit/heroku-docker-deploy@v1.3.3
+        with:
+          email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: tsavorite-greenbay-backend
+          dockerfile_directory: ./backend
+          dockerfile_name: Dockerfile
+          docker_options: "--no-cache"
+          process_type: web
+      - name: Build, push and deploy greenbay client to Heroku
+        uses: gonuit/heroku-docker-deploy@v1.3.3
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: tsavorite-greenbay
+          dockerfile_directory: ./frontend
+          dockerfile_name: Dockerfile
+          docker_options: "--no-cache"
+          process_type: web

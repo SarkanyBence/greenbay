@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component tests App snapshot test 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="header"
+  >
+    <a
+      href="/login"
+      onClick={[Function]}
+    >
+      <div
+        className="nav-item"
+      >
+        <h1>
+           greenBay!
+        </h1>
+      </div>
+    </a>
+    <a
+      href="/login"
+      onClick={[Function]}
+    >
+      <div
+        className="nav-item"
+      >
+        <p
+          className="title"
+        >
+           Hi 
+          Guest
+          ! 
+        </p>
+      </div>
+    </a>
+    <div
+      className="nav-item grow"
+    />
+    <a
+      href="/login"
+      onClick={[Function]}
+    >
+      <div
+        className="nav-item navbtn"
+      >
+        <p>
+          login
+           
+        </p>
+      </div>
+    </a>
+    <a
+      href="/register"
+      onClick={[Function]}
+    >
+      <div
+        className="nav-item navbtn"
+      >
+        <p>
+          register
+           
+        </p>
+      </div>
+    </a>
+  </div>
+  <div
+    className="base-container"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <span
+        className="formInput other-error"
+        style={
+          Object {
+            "opacity": 0,
+          }
+        }
+      >
+        Username or password is incorrect
+      </span>
+      <div
+        className="formInput"
+      >
+        <input
+          data-focused="false"
+          name="userName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Username"
+          required={true}
+          type="text"
+          value=""
+        />
+        <span
+          className="formInput error"
+        >
+          Username or password is incorrect
+        </span>
+      </div>
+      <div
+        className="formInput"
+      >
+        <input
+          data-focused="false"
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Password"
+          required={true}
+          type="password"
+          value=""
+        />
+        <span
+          className="formInput error"
+        >
+          Username or password is incorrect
+        </span>
+      </div>
+      <button>
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+`;
