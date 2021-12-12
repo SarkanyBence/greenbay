@@ -1,0 +1,10 @@
+CREATE TABLE soldItems (
+    id INT(6) AUTO_INCREMENT PRIMARY KEY,
+    soldAt INT NOT NULL,
+    itemId INT(6) NOT NULL UNIQUE,
+    sellerId INT(6) NOT NULL UNIQUE,
+    buyerId INT(6) NOT NULL UNIQUE,
+    FOREIGN KEY (buyerId) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (sellerId) REFERENCES items (sellerId) ON DELETE CASCADE,
+    FOREIGN KEY (itemId) REFERENCES items (id) ON DELETE CASCADE
+);

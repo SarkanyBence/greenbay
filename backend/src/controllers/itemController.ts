@@ -1,10 +1,9 @@
-import registrationService from "../services/registrationService";
-import User from "../types/User";
 import { Router } from "express";
 import TokenType from "../types/TokenType";
 import Item from "../types/Item";
 import itemService from "../services/itemService";
-import ItemDto from "../types/ItemDto";
+import ItemSend from "../types/ItemSend";
+import ItemRecived from "../types/ItemRecived";
 
 const itemController = Router();
 
@@ -14,22 +13,22 @@ itemController.get("/", async (req, res) => {
   itemService
     .fetchAllItemsToSell()
     .then((items: Item[]) => {
-      const itemDtos: ItemDto[] = [];
-      items.forEach((item) => itemDtos.push(new ItemDto(item)));
+      const itemDtos: ItemSend[] = [];
+      items.forEach((item) => itemDtos.push(new ItemSend(item)));
       res.status(200).json(itemDtos);
     })
     .catch((error) => res.status(500).json({ error: "Internal server error" }));
 });
 
-itemController.post("/:id", async (req, res) => {
-  const userId: number = req.params.id as unknown as number;
-  const item: Item = req.body.data.item;
+itemController.post("/", async (req, res) => {
+  const user: TokenType = res.locals.userData;
+  const item: ItemRecived = req.body.data.item;
 
   itemService
-    .saveNewItem(item, userId)
+    .saveNewItem(item, user)
     .then((item: Item) => {
-      let dto = new ItemDto(item);
-      res.status(200).json(item);
+      let dto = new ItemSend(item);
+      res.status(200).json(dto);
     })
     .catch((error) => res.status(500).json({ error: "Internal server error" }));
 });

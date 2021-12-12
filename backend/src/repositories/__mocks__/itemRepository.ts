@@ -10,7 +10,7 @@ export = {
         description: item.description,
         photoUrl: item.photoUrl,
         price: item.price,
-        status: ItemStatus.ACTIVE,
+        status: ItemStatus.SELLABLE,
         createdAt: 100,
         userId: item.userId,
       });
@@ -26,7 +26,7 @@ export = {
           description: "string",
           photoUrl: "string",
           price: 1,
-          status: ItemStatus.ACTIVE,
+          status: ItemStatus.SELLABLE,
           createdAt: 100,
           userId: userId,
         },
@@ -43,11 +43,25 @@ export = {
           description: "string",
           photoUrl: "string",
           price: 1,
-          status: ItemStatus.ACTIVE,
+          status: ItemStatus.SELLABLE,
           createdAt: 100,
           userId: 1,
         },
       ]);
+    });
+  },
+  sellItem: function (itemId: number): Promise<Item> {
+    return new Promise((resolve) => {
+      resolve({
+        id: itemId,
+        name: "name",
+        description: "description",
+        photoUrl: "photoUrl",
+        price: 1,
+        status: ItemStatus.SOLD,
+        createdAt: 100,
+        userId: 1,
+      });
     });
   },
 };

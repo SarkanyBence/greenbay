@@ -1,6 +1,5 @@
 enum ItemStatus {
-  PENDING = "pending",
-  ACTIVE = "active",
+  SELLABLE = "sellable",
   SOLD = "sold",
 }
 

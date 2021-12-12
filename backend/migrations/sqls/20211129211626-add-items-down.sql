@@ -1,1 +1,1 @@
-DELETE TABLE items;
+DROP TABLE items;
