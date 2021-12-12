@@ -1,11 +1,11 @@
 import ItemDto from "./ItemDto";
 
 class ItemType {
-  id: number;
-  name: string;
-  description: string;
-  photoUrl: string;
-  price: number;
+  id?: number;
+  name?: string;
+  description?: string;
+  photoUrl?: string;
+  price?: number;
 
   constructor(dto: ItemDto) {
     this.id = dto.id;

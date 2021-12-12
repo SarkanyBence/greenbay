@@ -9,8 +9,8 @@ class Item {
   price: number;
   status?: ItemStatus;
   createdAt?: number;
-  userName?: string;
-  userId?: number;
+  sellerName?: string;
+  sellerId?: number;
 
   constructor(itemRecived: ItemRecived) {
     this.name = itemRecived.name;

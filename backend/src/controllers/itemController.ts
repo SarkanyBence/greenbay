@@ -11,7 +11,7 @@ itemController.get("/", async (req, res) => {
   const userData: TokenType = res.locals.userData;
 
   itemService
-    .fetchAllItemsToSell()
+    .fetchAllItemsToSell(userData.id)
     .then((items: Item[]) => {
       const itemDtos: ItemSend[] = [];
       items.forEach((item) => itemDtos.push(new ItemSend(item)));
@@ -22,7 +22,7 @@ itemController.get("/", async (req, res) => {
 
 itemController.post("/", async (req, res) => {
   const user: TokenType = res.locals.userData;
-  const item: ItemRecived = req.body.data.item;
+  const item: ItemRecived = req.body.data;
 
   itemService
     .saveNewItem(item, user)

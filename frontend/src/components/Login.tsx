@@ -20,7 +20,7 @@ function Login() {
 
   const [userError, setUserError] = useState(false);
 
-  useEffect(() => {}, [userError]);
+  // useEffect(() => {}, [userError]);
 
   const submitForm = (e: any) => {
     e.preventDefault();
@@ -44,8 +44,10 @@ function Login() {
           });
       })
       .catch((err) => {
-        if (err.status === 400) {
+        if (err.status === 401) {
           setUserError(true);
+        } else if (err.status === 500) {
+          console.log(err);
         }
       });
   };
@@ -86,7 +88,7 @@ function Login() {
           <FormInput
             key={input.id}
             {...input}
-            userState={userState}
+            state={userState}
             handleChange={handleChange}
           />
         ))}

@@ -6,6 +6,13 @@ import tokenService from "./tokenService";
 export = {
   checkUser: async (userName: string, password: string): Promise<any> => {
     let savedUser: User = await userRepo.findByName(userName);
+    if (savedUser === undefined) {
+      console.log(savedUser);
+      throw {
+        status: 401,
+        message: "User not found!",
+      };
+    }
 
     if (bcrypt.verify(password, savedUser.password)) {
       return tokenService.generateToken(savedUser);

@@ -1,6 +1,4 @@
-import Item from "./Item";
-
-type SellItem = {
+type SoldItem = {
   id: number;
   soldAt: number;
   itemId: number;
@@ -8,4 +6,4 @@ type SellItem = {
   buyerId: number;
 };
 
-export default SellItem;
+export default SoldItem;

@@ -10,7 +10,7 @@ function BuyItem(props: PropsItem) {
       <div className="subitem">
         <p className="description"> {props.item.description}</p>
         <p className="price">
-          {props.item.price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}HUF
+          {props.item.price!.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}HUF
         </p>
       </div>
     </div>

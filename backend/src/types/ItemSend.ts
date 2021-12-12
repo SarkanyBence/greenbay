@@ -6,7 +6,7 @@ class ItemSend {
   description: string;
   photoUrl: string;
   price: number;
-  userName: string;
+  sellerName: string;
 
   constructor(item: Item) {
     this.id = item.id;
@@ -14,7 +14,7 @@ class ItemSend {
     this.photoUrl = item.photoUrl;
     this.description = item.description;
     this.price = item.price;
-    this.userName = item.userName;
+    this.sellerName = item.sellerName;
   }
 }
 

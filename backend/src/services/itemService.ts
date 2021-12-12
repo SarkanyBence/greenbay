@@ -1,13 +1,28 @@
 import Item from "../types/Item";
 import itemRepo from "../repositories/itemRepository";
+import soldRepo from "../repositories/soldRepository";
 import TokenType from "../types/TokenType";
 import ItemRecived from "../types/ItemRecived";
 import ItemStatus from "../types/ItemStatus";
+import SoldItem from "../types/SoldItem";
 
 export = {
-  fetchAllItemsToSell: async (): Promise<Item[]> => {
-    return await itemRepo.findAllSellable();
+  fetchAllItemsToSell: async (userId: number): Promise<Item[]> => {
+    const items: Item[] = await itemRepo.findAllSellable();
+    // return items.filter((item) => item.userId !== userId);
+    return items;
   },
+
+  fetchSellItemsByUserId: async (userId: number): Promise<SoldItem[]> => {
+    const items: SoldItem[] = await soldRepo.findAllBySellerId(userId);
+    return items;
+  },
+
+  fetchBoughtItemsByUserId: async (userId: number): Promise<SoldItem[]> => {
+    const items: SoldItem[] = await soldRepo.findAllByBuyerId(userId);
+    return items;
+  },
+
   saveNewItem: async (
     itemRecived: ItemRecived,
     user: TokenType
@@ -18,8 +33,8 @@ export = {
     });
 
     let item: Item = new Item(itemRecived);
-    item.userId = user.id;
-    item.userName = user.userName;
+    item.sellerId = user.id;
+    item.sellerName = user.userName;
     item.status = ItemStatus.SELLABLE;
     return await itemRepo.save(item);
   },

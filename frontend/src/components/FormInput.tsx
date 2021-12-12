@@ -4,9 +4,9 @@ import PropsInput from "../types/PropsInput";
 const FormInput = (props: PropsInput) => {
   let inputValue: any = "";
   const [focused, setFocused] = useState(false);
-  const { id, handleChange, errorMessage, userState, ...inputProps } = props;
-  if (userState) {
-    for (const [key, v] of Object.entries(userState)) {
+  const { id, handleChange, errorMessage, state, ...inputProps } = props;
+  if (state) {
+    for (const [key, v] of Object.entries(state)) {
       if (key === props.name) {
         inputValue = v;
       }

@@ -90,7 +90,7 @@ function Register() {
           <FormInput
             key={input.id}
             {...input}
-            userState={userState}
+            state={userState}
             handleChange={handleChange}
           />
         ))}

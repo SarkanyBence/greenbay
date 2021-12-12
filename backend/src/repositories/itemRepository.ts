@@ -6,6 +6,7 @@ import ItemStatus from "../types/ItemStatus";
 export = {
   save: function (item: Item): Promise<Item> {
     item.createdAt = Math.floor(Date.now() / 1000);
+
     const sql1: string = mysql.format("INSERT INTO items SET ?", item);
     const sql2: string = "SELECT * FROM items WHERE id = ?";
 
@@ -22,7 +23,7 @@ export = {
   },
 
   findAllSellable: function (): Promise<Item[]> {
-    const sql: string = "SELECT * FROM items WHERE status= 'active'";
+    const sql: string = "SELECT * FROM items WHERE status = 'sellable'";
 
     return query.arrayQuery(sql);
   },
