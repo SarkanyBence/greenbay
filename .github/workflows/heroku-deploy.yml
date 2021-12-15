@@ -19,7 +19,7 @@ jobs:
       - name: Build, push and deploy greenbay backend to Heroku
         uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          email: ${{ secrets.HEROKU_EMAIL }}
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: tsavorite-greenbay-backend
           dockerfile_directory: ./backend
@@ -29,7 +29,7 @@ jobs:
       - name: Build, push and deploy greenbay frontend to Heroku
         uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          email: ${{ secrets.HEROKU_EMAIL }}
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: tsavorite-greenbay
           dockerfile_directory: ./frontend
