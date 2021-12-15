@@ -20,7 +20,7 @@ export const ItemSlice = createSlice({
   name: "items",
   initialState: {
     loading: false,
-    items: [],
+    items: [] as ItemType[],
     error: null,
   },
   reducers: {

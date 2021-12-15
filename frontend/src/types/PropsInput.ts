@@ -7,7 +7,7 @@ type PropsInput = {
   name: string;
   placeholder: string;
   type: string;
-  handleChange?: ChangeEventHandler<HTMLInputElement>;
+  handleChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onBlur?: Function;
   state?: NewUser | NewItem;
   errorMessage?: string;

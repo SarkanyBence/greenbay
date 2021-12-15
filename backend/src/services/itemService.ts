@@ -29,7 +29,7 @@ export = {
   ): Promise<Item> => {
     if (itemRecived === undefined) throw checkFields();
     Object.entries(itemRecived).forEach(([k, v]) => {
-      if (v === "") throw checkFields(k);
+      if (!k.includes("optUrl")) if (v === "") throw checkFields(k);
     });
 
     let item: Item = new Item(itemRecived);

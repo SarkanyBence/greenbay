@@ -18,9 +18,11 @@ function Login() {
     password: "",
   } as NewUser);
 
-  const [userError, setUserError] = useState(false);
+  const [userError, setUserError] = useState("");
 
-  // useEffect(() => {}, [userError]);
+  useEffect(() => {
+    console.log(userError);
+  }, [userError]);
 
   const submitForm = (e: any) => {
     e.preventDefault();
@@ -38,16 +40,14 @@ function Login() {
         dispatch(fetchAllItems())
           .unwrap()
           .then((items) => {
-            console.log(items);
-
             history.push("/");
           });
       })
       .catch((err) => {
         if (err.status === 401) {
-          setUserError(true);
+          setUserError(err.message);
         } else if (err.status === 500) {
-          console.log(err);
+          setUserError(err.message);
         }
       });
   };
@@ -82,7 +82,7 @@ function Login() {
           className="formInput other-error"
           style={{ opacity: userError ? 1 : 0 }}
         >
-          Username or password is incorrect
+           {userError ? userError : "SOMETHING"}
         </span>
         {inputs.map((input) => (
           <FormInput

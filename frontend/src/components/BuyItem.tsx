@@ -8,7 +8,8 @@ function BuyItem(props: PropsItem) {
         <img src={props.item.photoUrl} alt="itemPhoto" />
       </div>
       <div className="subitem">
-        <p className="description"> {props.item.description}</p>
+        <p className="sellerName"> <small>Vendor:</small> {props.item.sellerName}</p>
+        <p className="description wrap"> {props.item.description}</p>
         <p className="price">
           {props.item.price!.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}HUF
         </p>

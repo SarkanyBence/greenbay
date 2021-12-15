@@ -12,6 +12,8 @@ function Sell() {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const [itemState, setItemState] = useState({} as NewItem);
+  const [optional, setOptional] = useState("" as string);
+  const [optionalInputs, setOptionalInputs] = useState([] as PropsInput[]);
 
   const [itemError, setItemError] = useState(false);
 
@@ -31,7 +33,13 @@ function Sell() {
   };
 
   const handleChange = (e: any) => {
-    setItemState({ ...itemState, [e.target.name]: e.target.value });
+    if (e.target.name !== "optionalUrls") {
+      setItemState({ ...itemState, [e.target.name]: e.target.value });
+    } else {
+      console.log(optional);
+      
+      setOptional(e.target.value);
+    }
   };
 
   const inputs: PropsInput[] = [
@@ -41,7 +49,7 @@ function Sell() {
       placeholder: "Name",
       type: "text",
       errorMessage: "Name should be at least 3 characters",
-      pattern: "[a-zA-Z0-9 _]{3,}",
+      pattern: "^.{3,}$",
       required: true,
     },
     {
@@ -50,7 +58,7 @@ function Sell() {
       placeholder: "Description",
       type: "textarea",
       errorMessage: "Description should be 3-100 characters",
-      pattern: "{3,100}", 
+      pattern: "^.{3,100}$",
       required: true,
     },
     {
@@ -65,14 +73,30 @@ function Sell() {
     {
       id: 4,
       name: "photoUrl",
-      placeholder: "Photo url",
-      type: "text",
-      errorMessage: "Photo url is reqired",
+      placeholder: "Main photo url",
+      type: "url",
+      errorMessage: "Main photo url is reqired",
       pattern:
         "^(http://www.|https://www.|http://|https://)?[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$",
       required: true,
     },
   ];
+  const addOptionals = (e: any) => {
+    e.preventDefault();
+
+    let id: number = optionalInputs.length + 5;
+    if (id < 10) {
+      let newOptional: PropsInput = {
+        id: id,
+        name: `optUrl${id-4}`,
+        placeholder: "Optional photo url",
+        type: "url",
+        pattern:
+          "^(http://www.|https://www.|http://|https://)?[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$",
+      };
+      setOptionalInputs((arr) => [...arr, newOptional]);
+    }
+  };
 
   return (
     <div className="base-container">
@@ -92,6 +116,31 @@ function Sell() {
             handleChange={handleChange}
           />
         ))}
+        <div className="optionals">
+          {optionalInputs.length !== 0 &&
+            optionalInputs.map((input) => (
+              <div className="optional-input">
+                <FormInput
+                  key={input.id}
+                  {...input}
+                  state={itemState}
+                  handleChange={handleChange}
+                />
+              </div>
+            ))}
+          <span
+            className="formInput other-error"
+            style={{ opacity: itemError ? 1 : 0 }}
+          >
+            Only valid url accepted
+          </span>
+          <button
+            onClick={addOptionals}
+            disabled={optionalInputs.length === 5 ? true : false}
+          >
+            Add more photo... <small>max. 5 urls</small>
+          </button>
+        </div>
 
         <button>Sell</button>
       </form>

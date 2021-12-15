@@ -18,17 +18,31 @@ const FormInput = (props: PropsInput) => {
 
   return (
     <div className="formInput">
-      {/* <label htmlFor="">{props.placeholder}</label> */}
-      <input
-        {...inputProps}
-        onChange={handleChange}
-        value={inputValue}
-        onBlur={handleFocus}
-        onFocus={() => {
-          props.name === "confirmPassword" && setFocused(true);
-        }}
-        data-focused={focused.toString()}
-      />
+      {inputProps.type !== "textarea" ? (
+        <input
+          {...inputProps}
+          onChange={handleChange}
+          value={inputValue}
+          onBlur={handleFocus}
+          onFocus={() => {
+            props.name === "confirmPassword" && setFocused(true);
+          }}
+          data-focused={focused.toString()}
+        />
+      ) : (
+        <textarea
+          {...inputProps}
+          rows={3}
+          cols={40}
+          onChange={handleChange}
+          value={inputValue}
+          onBlur={handleFocus}
+          onFocus={() => {
+            props.name === "confirmPassword" && setFocused(true);
+          }}
+          data-focused={focused.toString()}
+        />
+      )}
       <span className="formInput error">{props.errorMessage}</span>
     </div>
   );

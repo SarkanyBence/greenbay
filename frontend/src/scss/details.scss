@@ -1,0 +1,62 @@
+.details-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 95%;
+  padding: $base-margin-horizontal * 3;
+  background: linear-gradient(
+    map-get($colors, "background-yellow"),
+    map-get($colors, "background-item")
+  );
+  border-radius: $base-radius*3;
+  height: 65%;
+  
+  .detail-item {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-start;
+    align-items: center;
+    gap: 30px;
+    font-size: $base-font-size;
+
+    .detail-img {
+      align-self: start;
+      img {
+        width: $item-img-width * 1.5;
+        height: $item-img-width * 1.5;
+      }
+    }
+    p {
+      font-size: $base-font-size;
+      font-weight: 300;
+    }
+
+    .name,.price {
+      font-weight: 700;
+
+    }
+    .sellerName {
+      font-style: italic;
+      color: map-get($colors , "greenColor" );
+      font-weight: 400;
+    }
+
+    .detail-img-btn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      button {
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        border: map-get($colors, "greenColor") solid 0.1px;
+      }
+    }
+  }
+}
