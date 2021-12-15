@@ -24,6 +24,11 @@ function BuySelected() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+const buyItem = (e:any) => {
+  e.preventDefault();
+   
+}
+
   return (
     <div className="base-container">
       {!loading && (
@@ -58,9 +63,7 @@ function BuySelected() {
             >
               Buy
             </button>
-            <div className="detail-back">
-              <Link to="/">Back</Link>
-            </div>
+              <Link to="/">&lt;&lt;</Link>
           </div>
         </div>
       )}

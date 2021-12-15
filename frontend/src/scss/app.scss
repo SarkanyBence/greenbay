@@ -31,7 +31,7 @@
       height: $header-btn-height;
 
       &:hover {
-        background-color: map-get($colors, "background-transparent");
+        background-color: map-get($colors, "background-item");
         box-shadow: 0px 0 11px rgba(33, 33, 33, 0.2);
         transform: scale(1.02);
       }
