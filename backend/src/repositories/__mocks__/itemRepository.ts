@@ -12,7 +12,7 @@ export = {
         price: item.price,
         status: ItemStatus.SELLABLE,
         createdAt: 100,
-        userId: item.userId,
+        sellerId: item.sellerId,
       });
     });
   },
@@ -28,7 +28,7 @@ export = {
           price: 1,
           status: ItemStatus.SELLABLE,
           createdAt: 100,
-          userId: userId,
+          sellerId: userId,
         },
       ]);
     });
@@ -45,7 +45,7 @@ export = {
           price: 1,
           status: ItemStatus.SELLABLE,
           createdAt: 100,
-          userId: 1,
+          sellerId: 1,
         },
       ]);
     });
@@ -60,7 +60,7 @@ export = {
         price: 1,
         status: ItemStatus.SOLD,
         createdAt: 100,
-        userId: 1,
+        sellerId: 1,
       });
     });
   },

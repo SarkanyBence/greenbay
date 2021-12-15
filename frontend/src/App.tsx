@@ -11,7 +11,6 @@ import Register from "./components/Register";
 import Sell from "./components/Sell";
 import { useAppDispatch, useAppSelector } from "./hooks/stateHooks";
 import { StateType } from "./redux/store";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import jwt from "jsonwebtoken";
 import { changeUser } from "./redux/UserSlice";
@@ -44,7 +43,7 @@ function App() {
   if (loading) {
     return (
       <div className="App">
-        <div className="">loading</div>
+        <div>loading</div>
       </div>
     );
   } else {
@@ -78,6 +77,9 @@ function App() {
               </Route>
               <Route path="/sell">
                 <Sell />
+              </Route>
+              <Route exact path="/buy">
+                <Main />
               </Route>
               <Route path="/buy/:id">
                 <BuySelected />

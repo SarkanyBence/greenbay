@@ -1,4 +1,5 @@
 import Item from "./Item";
+import ItemStatus from "./ItemStatus";
 
 class ItemSend {
   id: number;
@@ -12,6 +13,7 @@ class ItemSend {
   optUrl5?: string;
   price: number;
   sellerName: string;
+  status: ItemStatus;
 
   constructor(item: Item) {
     this.id = item.id;
@@ -25,6 +27,7 @@ class ItemSend {
     this.description = item.description;
     this.price = item.price;
     this.sellerName = item.sellerName;
+    this.status = item.status;
   }
 }
 

@@ -51,12 +51,14 @@
       width: $reg-input-width;
       input,
       textarea {
-        padding: 15px;
+        padding: 20px;
         width: $reg-input-width;
         border: map-get($colors, "grayColor") 1px solid;
         border-radius: $base-radius;
         -webkit-transition: 0.5s;
         transition: 0.5s;
+        box-sizing: border-box;
+        font-size: $base-font-size*0.65;
 
         &:hover,
         &:focus {
@@ -90,6 +92,10 @@
       line-height: 100px;
       height: auto;
     }
+  }
+
+  a {
+    text-decoration: none;
   }
 }
 

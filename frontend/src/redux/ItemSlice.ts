@@ -27,6 +27,12 @@ export const ItemSlice = createSlice({
     addItem: (state: ItemState, action: PayloadAction<ItemType>) => {
       state.items = [...state.items, action.payload];
     },
+    updateItem: (state: ItemState, action: PayloadAction<ItemType>) => {
+      let filtered = state.items.filter(
+        (item) => item.id !== action.payload.id
+      );
+      state.items = [...filtered, action.payload];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchAllItems.pending, (state: ItemState) => {
@@ -44,7 +50,7 @@ export const ItemSlice = createSlice({
   },
 });
 
-export const { addItem } = ItemSlice.actions;
+export const { addItem, updateItem } = ItemSlice.actions;
 
 export const selectItems = (state: ItemState) => state;
 

@@ -10,5 +10,6 @@ type ItemDto = {
   optUrl5?: string;
   price: number;
   sellerName: string;
+  status: string;
 };
 export default ItemDto;

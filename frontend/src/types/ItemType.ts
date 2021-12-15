@@ -12,6 +12,7 @@ class ItemType {
   optUrl5?: string;
   price?: number;
   sellerName?: string;
+  status?: string;
 
   constructor(dto: ItemDto) {
     this.id = dto.id;
@@ -25,6 +26,7 @@ class ItemType {
     this.optUrl5 = dto.optUrl5;
     this.price = dto.price;
     this.sellerName = dto.sellerName;
+    this.status = dto.status;
   }
 }
 

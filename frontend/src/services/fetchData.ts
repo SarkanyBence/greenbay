@@ -15,10 +15,12 @@ const fetchData = async (
   };
 
   if (method !== "GET") init.body = JSON.stringify({ data });
+  console.log("url", url);
 
   try {
     const response = await fetch(url, init);
     const result = await response.json();
+    console.log("result", result);
 
     if (!response.ok) {
       // eslint-disable-next-line no-throw-literal
