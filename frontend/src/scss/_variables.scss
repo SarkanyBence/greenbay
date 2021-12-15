@@ -23,14 +23,19 @@ $header-btn-width: $base-grid-width * 12;
 $header-btn-height: $header-height * 0.75;
 
 //register
-$reg-input-width: $full-width * 0.2;
+$reg-input-width: $full-width * 0.25;
 
 //main body
 $main-container-height: $full-height * 0.92;
 
 //items
-$item-height: $full-height * 0.2;
+$item-height: $full-height * 0.26;
 $item-width: $full-width * 0.4;
+$item-describe-height: $item-height * 0.45;
+
 $item-img-height: $item-height * 0.8;
 $item-img-width: $item-height * 1;
+
 $subitem-width: calc($item-width - $item-height);
+
+$error-height: $header-btn-height* 0.8;

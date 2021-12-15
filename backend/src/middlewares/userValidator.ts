@@ -1,4 +1,5 @@
 import userRepo from "../repositories/userRepository";
+import User from "../types/User";
 
 const userValidator = async (req, res, next) => {
   const userName: string = req.body.data.userName;

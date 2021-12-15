@@ -22,7 +22,6 @@ function Register() {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
     const dataDto: NewUserDto = new NewUserDto(data as unknown as NewUser);
-
     fetchData("POST", "/register", dataDto)
       .then((res) => {
         history.push("/login");
@@ -91,7 +90,7 @@ function Register() {
           <FormInput
             key={input.id}
             {...input}
-            userState={userState}
+            state={userState}
             handleChange={handleChange}
           />
         ))}

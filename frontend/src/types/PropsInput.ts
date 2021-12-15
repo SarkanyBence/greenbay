@@ -1,4 +1,5 @@
 import { ChangeEventHandler } from "react";
+import NewItem from "./NewItem";
 import NewUser from "./newUser";
 
 type PropsInput = {
@@ -6,9 +7,9 @@ type PropsInput = {
   name: string;
   placeholder: string;
   type: string;
-  handleChange?: ChangeEventHandler<HTMLInputElement>;
+  handleChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onBlur?: Function;
-  userState?: NewUser;
+  state?: NewUser | NewItem;
   errorMessage?: string;
   pattern?: string;
   required?: true;

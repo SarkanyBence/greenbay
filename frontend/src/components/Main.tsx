@@ -1,11 +1,12 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/stateHooks";
 import { fetchAllItems } from "../redux/ItemSlice";
 import { StateType } from "../redux/store";
 import ItemType from "../types/ItemType";
 import BuyItem from "./BuyItem";
 
-const Buy = () => {
+const Main = () => {
   const items: ItemType[] = useAppSelector(
     (state: StateType) => state.items.items
   );
@@ -14,20 +15,21 @@ const Buy = () => {
   useEffect(() => {
     if (!items || items.length === 0 || items[0] === undefined)
       dispatch(fetchAllItems()).then((items) => {
-        console.log("AFTER: ",items);
+        console.log("AFTER: ", items);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch, items]);
 
   return (
-    <div className="base-container">
-      <div className="item-container">
+    <div className="base-container scrollable">
+      <div className="item-container ">
         {items &&
           items.length > 0 &&
           items[0] !== undefined &&
           items.map((item) => (
             <div key={item.id}>
-              <BuyItem item={item} />
+              <Link to={"buy/" + item.id}>
+                <BuyItem item={item} />
+              </Link>
             </div>
           ))}
       </div>
@@ -35,4 +37,4 @@ const Buy = () => {
   );
 };
 
-export default Buy;
+export default Main;

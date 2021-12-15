@@ -8,7 +8,7 @@ on:
       - develop
   push:
     branches:
-      - heroku
+      - develop
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Build, push and deploy greenbay server to Heroku
+      - name: Build, push and deploy greenbay backend to Heroku
         uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
           email: ${{ secrets.HEROKU_EMAIL }}
@@ -26,7 +26,7 @@ jobs:
           dockerfile_name: Dockerfile
           docker_options: "--no-cache"
           process_type: web
-      - name: Build, push and deploy greenbay client to Heroku
+      - name: Build, push and deploy greenbay frontend to Heroku
         uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
           email: ${{ secrets.HEROKU_EMAIL }}

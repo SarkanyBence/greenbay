@@ -1,10 +1,11 @@
-import registrationService from "../services/registrationService";
-import User from "../types/User";
 import { Router } from "express";
 import TokenType from "../types/TokenType";
 import Item from "../types/Item";
 import itemService from "../services/itemService";
-import ItemDto from "../types/ItemDto";
+import ItemSend from "../types/ItemSend";
+import ItemRecived from "../types/ItemRecived";
+import SoldItem from "../types/SoldItem";
+import SoldDto from "../types/SoldDto";
 
 const itemController = Router();
 
@@ -12,23 +13,37 @@ itemController.get("/", async (req, res) => {
   const userData: TokenType = res.locals.userData;
 
   itemService
-    .fetchAllItemsToSell()
+    .fetchAllItemsToSell(userData.id)
     .then((items: Item[]) => {
-      const itemDtos: ItemDto[] = [];
-      items.forEach((item) => itemDtos.push(new ItemDto(item)));
+      const itemDtos: ItemSend[] = [];
+      items.forEach((item) => itemDtos.push(new ItemSend(item)));
       res.status(200).json(itemDtos);
     })
     .catch((error) => res.status(500).json({ error: "Internal server error" }));
 });
 
 itemController.post("/", async (req, res) => {
-  const userName: string = req.body.userName;
-  const password: string = req.body.password;
+  const user: TokenType = res.locals.userData;
+  const item: ItemRecived = req.body.data;
 
-  registrationService
-    .saveUser(userName, password)
-    .then((user: User) => {
-      res.status(200).json(user);
+  itemService
+    .saveNewItem(item, user)
+    .then((item: Item) => {
+      let dto = new ItemSend(item);
+      res.status(200).json(dto);
+    })
+    .catch((error) => res.status(500).json({ error: "Internal server error" }));
+});
+
+itemController.put("/:id", async (req, res) => {
+  const user: TokenType = res.locals.userData;
+  const idToBuy: number = req.params.id as unknown as number;
+
+  itemService
+    .buyItem(idToBuy, user)
+    .then((soldItem: Item) => {
+      let dto = new ItemSend(soldItem);
+      res.status(200).json(dto);
     })
     .catch((error) => res.status(500).json({ error: "Internal server error" }));
 });

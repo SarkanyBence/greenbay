@@ -1,9 +1,8 @@
 .base-container {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
-  gap: 30px;
   height: $main-container-height;
   background: linear-gradient(
       rgba(255, 255, 255, 0.7),
@@ -12,6 +11,7 @@
     url("../images/bay-bg.JPG");
   background-size: cover;
   background-position: center;
+  transition: box-shadow 0.3s;
 
   form {
     display: flex;
@@ -31,7 +31,9 @@
       height: $header-btn-height;
 
       &:hover {
-        background-color: map-get($colors, "background-transparent");
+        background-color: map-get($colors, "background-item");
+        box-shadow: 0px 0 11px rgba(33, 33, 33, 0.2);
+        transform: scale(1.02);
       }
     }
 
@@ -40,24 +42,30 @@
       color: map-get($colors, "redColor");
       font-size: $base-font-size * 0.65;
       display: block;
-      height: $header-btn-height;
+      height: $error-height;
       opacity: 0;
+      line-height: 20px;
     }
-    
+
     .formInput {
       width: $reg-input-width;
-      input {
-        padding: 15px;
+      input,
+      textarea {
+        padding: 20px;
         width: $reg-input-width;
         border: map-get($colors, "grayColor") 1px solid;
         border-radius: $base-radius;
         -webkit-transition: 0.5s;
         transition: 0.5s;
-        
+        box-sizing: border-box;
+        font-size: $base-font-size*0.65;
+
         &:hover,
         &:focus {
           border: map-get($colors, "greenColor") 1px solid;
           background-color: map-get($colors, "background-transparent");
+          box-shadow: 0px 0 11px rgba(33, 33, 33, 0.2);
+
           &::placeholder {
             color: white;
           }
@@ -65,19 +73,70 @@
         &:focus {
           border: map-get($colors, "greenColor") 2px solid;
         }
-        
+
         &:invalid[data-focused="true"] {
           border: 1px solid red;
         }
-        
+
         &:invalid[data-focused="true"] ~ .error {
           opacity: 1;
+        }
+        ::placeholder {
+          color: map-get($colors, "grayColor");
         }
       }
     }
     .other-error {
+      flex-shrink: 0;
       margin-top: auto;
-      line-height: 80px;
+      line-height: 100px;
+      height: auto;
     }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.scrollable {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.optionals {
+  padding: $base-margin-vertical * 1;
+  display: flex;
+  flex-direction: column;
+  gap: $base-margin-vertical * 0.1;
+  font-family: $base-font-family;
+  border-radius: $base-radius;
+  transition: box-shadow 0.3s;
+  height: $main-container-height * 0.4;
+
+  .formInput {
+    width: $reg-input-width;
+    justify-content: flex-start;
+
+    .error {
+      height: 5px;
+    }
+    button {
+      flex-shrink: 0;
+      margin-top: 0;
+    }
+    input {
+      height: 40px;
+      width: $reg-input-width;
+      border: map-get($colors, "grayColor") 1px solid;
+      border-radius: $base-radius;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+    }
+  }
+  .other-error {
+    margin-top: 0;
+    line-height: 20px;
   }
 }

@@ -1,0 +1,104 @@
+.details-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: $full-width * 0.9;
+  padding: $base-margin-horizontal * 3;
+  background: linear-gradient(
+    map-get($colors, "background-yellow"),
+    map-get($colors, "background-item")
+  );
+  border-radius: $base-radius * 3;
+  height: $main-container-height * 0.6;
+  min-height: $main-container-height * 0.6;
+
+  .detail-item {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    font-size: $base-font-size;
+
+    .detail-img {
+      align-self: start;
+      img {
+        width: $item-img-width * 1.5;
+        height: $item-img-width * 1.5;
+      }
+    }
+    
+    p {
+      font-size: $base-font-size;
+      font-weight: 300;
+      color: black;
+      text-decoration: none;
+    }
+
+    .name,
+    .price {
+      font-weight: 700;
+    }
+    .sellerName {
+      font-style: italic;
+      color: map-get($colors, "greenColor");
+      font-weight: 400;
+    }
+
+    button {
+      font-size: $base-font-size * 0.8;
+      font-family: $base-font-family;
+      font-weight: 200;
+      border: none;
+      border-radius: $base-radius;
+      color: White;
+      background-color: map-get($colors, "greenColor");
+      padding: $base-margin-horizontal * 0.4;
+      width: $reg-input-width;
+      height: $header-btn-height;
+      display: inline-block;
+      text-align: left;
+      padding: 5px 25px;
+      img {
+        display: inline-block;
+        height: $header-btn-height * 0.5;
+        float: right;
+      }
+
+      &:hover {
+        background-color: map-get($colors, "background-transparent");
+        box-shadow: 0px 0 11px rgba(33, 33, 33, 0.2);
+        transform: scale(1.02);
+      }
+    }
+
+    .detail-img-btn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      & button {
+        background-color: map-get($colors, "background-item");
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        border: map-get($colors, "lightGrayColor") solid 0.1px;
+        padding: 0;
+        &:hover {
+          background-color: map-get($colors, "background-transparent");
+          box-shadow: 0px 0 11px rgba(33, 33, 33, 0.2);
+          transform: scale(1.02);
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: map-get($colors, "grayColor");
+    }
+  }
+}
